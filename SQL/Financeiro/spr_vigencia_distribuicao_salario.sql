@@ -126,9 +126,8 @@ as begin try
 	set	@etapa_processo	=	'Verifica se tem 100% alocado na distribuição mais recente.'
 	--	=================================================================================================
 	
-	if ( select soma_percentual from #tmp_aux_validacao_distribuicao_salario_100 ) <> 1
-		raiserror( 'Distribuição mais recente alocada está diferente de 100%', 16, 1 )
-		
+	if ( select convert( int, soma_percentual ) from #tmp_aux_validacao_distribuicao_salario_100 ) <> 1
+		raiserror( 'Distribuição mais recente alocada está diferente de 100', 16, 1 )
 
 
 	
